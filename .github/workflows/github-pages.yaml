@@ -25,11 +25,9 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Install
-        run: |
-          flutter config
-          flutter pub get
       - name: Build
+        run: flutter --version
+        run: flutter pub get
         run: flutter build web --release --web-renderer html --base-href /${{ steps.version.outputs.repository }}/
 
       - name: Deploy
