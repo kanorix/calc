@@ -16,40 +16,45 @@ class HomePage extends ConsumerWidget {
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: Scrollbar(
-                controller: scrollController,
-                child: ListView.builder(
-                  reverse: true,
-                  itemBuilder: (context, index) {
-                    final form = rlogs[index];
-                    return Dismissible(
-                      key: ObjectKey(form),
-                      direction: DismissDirection.endToStart,
-                      onDismissed: (_) {
-                        rlogs.removeAt(index);
-                        ref
-                            .read(logProvider.state)
-                            .update((state) => [...rlogs].reversed.toList());
+        child: Center(
+          child: Column(
+            children: [
+              Expanded(
+                child: SizedBox(
+                  width: 400,
+                  child: Scrollbar(
+                    controller: scrollController,
+                    child: ListView.builder(
+                      reverse: true,
+                      itemBuilder: (context, index) {
+                        final form = rlogs[index];
+                        return Dismissible(
+                          key: ObjectKey(form),
+                          direction: DismissDirection.endToStart,
+                          onDismissed: (_) {
+                            rlogs.removeAt(index);
+                            ref.read(logProvider.state).update(
+                                (state) => [...rlogs].reversed.toList());
+                          },
+                          background: Container(
+                            alignment: AlignmentDirectional.centerEnd,
+                            padding: const EdgeInsets.all(10),
+                            color: Colors.red,
+                            child:
+                                const Icon(Icons.delete, color: Colors.white),
+                          ),
+                          child: LogWidget(index, form),
+                        );
                       },
-                      background: Container(
-                        alignment: AlignmentDirectional.centerEnd,
-                        padding: const EdgeInsets.all(10),
-                        color: Colors.red,
-                        child: const Icon(Icons.delete, color: Colors.white),
-                      ),
-                      child: LogWidget(index, form),
-                    );
-                  },
-                  itemCount: logs.length,
+                      itemCount: logs.length,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            const ResultWidget(),
-            const InputWidget(),
-          ],
+              const ResultWidget(),
+              const InputWidget(),
+            ],
+          ),
         ),
       ),
     );
