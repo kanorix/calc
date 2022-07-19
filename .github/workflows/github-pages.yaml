@@ -26,9 +26,9 @@ jobs:
           cache: true
 
       - name: Build
-        run: flutter --version
-        run: flutter pub get
-        run: flutter build web --release --web-renderer html --base-href /${{ steps.version.outputs.repository }}/
+      - run: flutter --version
+      - run: flutter pub get
+      - run: flutter build web --release --web-renderer html --base-href /${{ steps.version.outputs.repository }}/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
