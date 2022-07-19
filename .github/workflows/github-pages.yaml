@@ -11,7 +11,10 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-18.04
+    timeout-minutes: 15
     steps:
+      - uses: actions/checkout@v2
+
       - name: Repository
         id: version
         run: |
@@ -26,9 +29,10 @@ jobs:
           cache: true
 
       - name: Build
-      - run: flutter --version
-      - run: flutter pub get
-      - run: flutter build web --release --web-renderer html --base-href /${{ steps.version.outputs.repository }}/
+      - run:
+          flutter --version|
+          flutter pub get
+          flutter build web --release --web-renderer html --base-href /${{ steps.version.outputs.repository }}/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
