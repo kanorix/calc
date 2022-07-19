@@ -1,4 +1,3 @@
-import 'package:calc/ui/fonts.dart';
 import 'package:flutter/material.dart';
 
 class LogForm {
@@ -35,13 +34,13 @@ class LogWidget extends StatelessWidget {
           onPressed: () {},
           child: Text(
             '#${(index + 1)}',
-            style: Fonts.sourceCodePro(fontSize: 18),
+            style: const TextStyle(fontSize: 20),
           ),
         ),
         title: Text(
           logForm.result,
           textAlign: TextAlign.end,
-          style: Fonts.sourceCodePro(fontSize: 25),
+          style: const TextStyle(fontSize: 25),
         ),
         subtitle: Text(
           logForm.input,

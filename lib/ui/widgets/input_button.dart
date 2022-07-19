@@ -1,4 +1,3 @@
-import 'package:calc/ui/fonts.dart';
 import 'package:calc/ui/pages/home_page.dart';
 import 'package:calc/ui/widgets/log_widget.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +38,7 @@ class InputButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       width: 85,
-      height: small ? 45 : 60,
+      height: small ? 45 : 55,
       margin: const EdgeInsets.all(5),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -48,7 +47,7 @@ class InputButton extends ConsumerWidget {
         child: icon ??
             Text(
               char,
-              style: Fonts.sourceCodePro(fontSize: small ? 25 : 32),
+              style: TextStyle(fontSize: small ? 25 : 32),
             ),
         onPressed: () {
           if (char == InputButton.equal) {

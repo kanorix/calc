@@ -9,4 +9,11 @@ class Fonts {
       fontSize: fontSize,
     );
   }
+
+  static TextStyle mPlusRounded1c({double? fontSize}) {
+    return TextStyle(
+      fontFamily: 'MPLUSRounded1c',
+      fontSize: fontSize,
+    );
+  }
 }

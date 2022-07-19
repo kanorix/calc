@@ -21,6 +21,7 @@ class App extends ConsumerWidget {
       routeInformationProvider: router.routeInformationProvider,
       routerDelegate: router.routerDelegate,
       routeInformationParser: router.routeInformationParser,
+      theme: ThemeData(fontFamily: 'MPLUSRounded1c'),
     );
   }
 }
